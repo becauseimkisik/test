@@ -36,7 +36,6 @@ namespace TestConsole
         }
         public static void MyExample()
         {
-            //Thread thread = new Thread(Spam);
             Console.WriteLine("Hello");
             Thread.Sleep(5000);
             for (int i = 0; i < 1000; i++)
@@ -46,16 +45,19 @@ namespace TestConsole
                 thread2.Start();
                 thread2 = null;
             }
-            Thread.Sleep(3000);
-            GC.Collect(0);
-            //thread.Start();
-            //Console.WriteLine($"{thread.ThreadState}");
+        }
+		
+		public static void MyExample2()
+        {
+            Console.WriteLine("Hello");
             Thread.Sleep(5000);
-            
-            Console.WriteLine("Main was executed");
-            //thread.Abort();
-            //Console.WriteLine($"{thread.ThreadState}");
-
+            for (int i = 0; i < 1000; i++)
+            {
+                Thread thread2 = new Thread(Spam);
+                thread2.Name = "Test";
+                thread2.Start();
+                thread2 = null;
+            }
         }
 
         public static void Main()
